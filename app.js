@@ -42,7 +42,7 @@
   function fallbackShow(){document.querySelectorAll('.fx').forEach(function(el){el.classList.add('shown');});document.querySelectorAll('.fxstag').forEach(function(el){el.classList.add('shown');});}
   window.addEventListener('load',function(){
     var lenis=null;
-    if(!reduce&&typeof Lenis!=='undefined'){try{lenis=new Lenis({lerp:0.1,smoothWheel:true});}catch(e){lenis=null;}}
+    if(!reduce&&typeof Lenis!=='undefined'){try{lenis=new Lenis({lerp:0.1,smoothWheel:true});window.__lenis=lenis;}catch(e){lenis=null;}}
     var hasG=!reduce&&window.gsap&&window.ScrollTrigger;
     if(hasG){
       gsap.registerPlugin(ScrollTrigger);
@@ -110,6 +110,26 @@
     stage.querySelectorAll('.hubnode').forEach(function(n){var k=n.getAttribute('data-k');n.addEventListener('mouseenter',function(){activate(k);});n.addEventListener('focus',function(){activate(k);});n.addEventListener('click',function(e){e.preventDefault();activate(k);});});
     if(chips)chips.querySelectorAll('.hubchip').forEach(function(n){n.addEventListener('click',function(){activate(n.getAttribute('data-k'));});});
     activate(data[0].k);
+  })();
+
+
+  // modal de case (pop-up com galeria + storytelling + big number)
+  (function(){
+    var modal=document.getElementById('caseModal');if(!modal)return;
+    var dataEl=document.getElementById('casedata');var DATA={};
+    try{JSON.parse(dataEl.textContent).forEach(function(c){DATA[c.id]=c;});}catch(e){}
+    var gal=document.getElementById('modalGallery'),mTag=document.getElementById('mTag'),mBig=document.getElementById('mBig'),mBigL=document.getElementById('mBigL'),mTitle=document.getElementById('mTitle'),mProj=document.getElementById('mProj'),mStory=document.getElementById('mStory');
+    function openCase(id){var c=DATA[id];if(!c)return;
+      gal.innerHTML=(c.ph||[]).map(function(f){return '<img loading="lazy" src="img/'+f+'" alt="'+c.cli+'">';}).join('');
+      mTag.textContent=c.tag;mBig.textContent=c.big;mBigL.textContent=c.bigl;mTitle.textContent=c.cli;mProj.textContent=c.proj||'';mStory.textContent=c.story;
+      modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+      if(window.__lenis){try{window.__lenis.stop();}catch(e){}}
+      var mm=modal.querySelector('.modal-media');if(mm)mm.scrollTop=0;
+    }
+    function closeCase(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(window.__lenis){try{window.__lenis.start();}catch(e){}}}
+    document.querySelectorAll('.ccard[data-id]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openCase(a.getAttribute('data-id'));});});
+    modal.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',closeCase);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.keyCode===27)closeCase();});
   })();
 
 })();
