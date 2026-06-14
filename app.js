@@ -74,4 +74,42 @@
 
   // filtro da pagina de cases
   (function(){var fb=[].slice.call(document.querySelectorAll('[data-filter]'));if(!fb.length)return;var rows=[].slice.call(document.querySelectorAll('[data-cat]'));fb.forEach(function(b){b.addEventListener('click',function(){fb.forEach(function(x){x.classList.remove('active');});b.classList.add('active');var f=b.getAttribute('data-filter');rows.forEach(function(r){var ok=(f==='all'||r.getAttribute('data-cat')===f);r.style.display=ok?'':'none';});if(window.ScrollTrigger){try{ScrollTrigger.refresh();}catch(e){}}});});})();
+
+  // infografico interativo (hub de solucoes)
+  (function(){
+    var stage=document.getElementById('hubstage');var panel=document.getElementById('hubpanel');var chips=document.getElementById('hubchips');
+    if(!stage||!panel)return;
+    var I={
+      ev:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M16 4v5M16 23v5M4 16h5M23 16h5M8 8l3.2 3.2M20.8 20.8L24 24M24 8l-3.2 3.2M11.2 20.8L8 24"/><circle cx="16" cy="16" r="3.6"/></svg>',
+      st:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M7 13h18v12H7z"/><path d="M6 13l3-5h14l3 5"/></svg>',
+      mt:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="7" y="11" width="18" height="14"/><path d="M7 16h18M12 11l4-5 4 5"/></svg>',
+      nc:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M11 7h10v5a5 5 0 0 1-10 0z"/><path d="M11 9H7a4 4 0 0 0 4 5M21 9h4a4 4 0 0 1-4 5M16 17v5M12 25h8"/></svg>',
+      pr:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M9 9h7l8 8-7 7-8-8z"/><path d="M15 20l5-5"/><circle cx="13" cy="13" r="1.3" fill="currentColor" stroke="none"/></svg>',
+      rm:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="6" y="8" width="20" height="13" rx="1.5"/><path d="M14 12l5 2.5-5 2.5z" fill="currentColor" stroke="none"/><path d="M12 25h8M16 21v4"/></svg>',
+      pm:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="16" cy="12" r="4.4"/><path d="M8 26a8 8 0 0 1 16 0"/></svg>',
+      pl:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M16 9v14M9 16h14"/></svg>'
+    };
+    var data=[
+      {k:'eventos',l:'Eventos',ic:I.ev,d:'Experiencias de marca que aproximam canal, shopper e equipe \u2014 do conceito a execucao.',t:['Convencoes','Ativacoes','Experiencias']},
+      {k:'stand',l:'Stand',ic:I.st,d:'Presenca que chama atencao em feiras e eventos: projeto, producao e montagem.',t:['Projeto','Producao','Montagem']},
+      {k:'pdv',l:'Material PDV',ic:I.mt,d:'O material certo na gondola \u2014 display, comunicacao e exposicao que convertem.',t:['Displays','Comunicacao','Exposicao']},
+      {k:'incentivo',l:'Incentivo',ic:I.nc,d:'Engajamento de forca de vendas e canal com mecanicas que movem o resultado.',t:['Forca de vendas','Canal','Premiacao']},
+      {k:'promocao',l:'Promocao',ic:I.pr,d:'Mecanicas promocionais que geram giro, experimentacao e sell-out.',t:['Sell-out','Giro','Experimentacao']},
+      {k:'retail',l:'Retail media',ic:I.rm,d:'A sua marca nos canais de midia do varejo, dentro e fora da loja.',t:['Midia de varejo','In-store','Digital']},
+      {k:'promotoria',l:'Promotoria',ic:I.pm,d:'Time de campo executando na ponta, com inteligencia e cobertura.',t:['Time de campo','Execucao','Cobertura']},
+      {k:'mais',l:'+ Mais',ic:I.pl,d:'Nao achou? A gente pluga o especialista certo do hub para o seu desafio.',t:['Hub de parceiros','Sob medida']}
+    ];
+    var pos=[[88,50],[77,77],[50,88],[23,77],[12,50],[23,23],[50,12],[77,23]];
+    var lines=stage.querySelector('.hublines');
+    var lh='';data.forEach(function(d,i){lh+='<line data-k="'+d.k+'" x1="50" y1="50" x2="'+pos[i][0]+'" y2="'+pos[i][1]+'"></line>';});
+    if(lines)lines.innerHTML=lh;
+    data.forEach(function(d,i){var b=document.createElement('button');b.className='hubnode';b.setAttribute('data-k',d.k);b.setAttribute('aria-label',d.l);b.style.left=pos[i][0]+'%';b.style.top=pos[i][1]+'%';b.innerHTML='<span class="dot">'+d.ic+'</span><span>'+d.l+'</span>';stage.appendChild(b);});
+    if(chips){var ch='';data.forEach(function(d){ch+='<button class="hubchip" data-k="'+d.k+'">'+d.l+'</button>';});chips.innerHTML=ch;}
+    var map={};data.forEach(function(d){map[d.k]=d;});
+    function activate(k){var d=map[k];if(!d)return;stage.querySelectorAll('.hubnode').forEach(function(n){n.classList.toggle('on',n.getAttribute('data-k')===k);});if(lines)lines.querySelectorAll('line').forEach(function(l){l.classList.toggle('on',l.getAttribute('data-k')===k);});if(chips)chips.querySelectorAll('.hubchip').forEach(function(n){n.classList.toggle('on',n.getAttribute('data-k')===k);});panel.innerHTML='<div class="pk"><i></i> Solucao plugada</div><h3>'+d.l+'</h3><p>'+d.d+'</p><div class="tags">'+d.t.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>';}
+    stage.querySelectorAll('.hubnode').forEach(function(n){var k=n.getAttribute('data-k');n.addEventListener('mouseenter',function(){activate(k);});n.addEventListener('focus',function(){activate(k);});n.addEventListener('click',function(e){e.preventDefault();activate(k);});});
+    if(chips)chips.querySelectorAll('.hubchip').forEach(function(n){n.addEventListener('click',function(){activate(n.getAttribute('data-k'));});});
+    activate(data[0].k);
+  })();
+
 })();
