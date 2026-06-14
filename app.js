@@ -71,4 +71,7 @@
     document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(ev){var id=a.getAttribute('href');if(id.length<2)return;var el=document.querySelector(id);if(!el)return;ev.preventDefault();if(lenis)lenis.scrollTo(el,{offset:-60});else el.scrollIntoView({behavior:'smooth'});});});
   });
   setTimeout(function(){if(!window.gsap&&!document.querySelector('.fx.shown')){fallbackShow();}},2500);
+
+  // filtro da pagina de cases
+  (function(){var fb=[].slice.call(document.querySelectorAll('[data-filter]'));if(!fb.length)return;var rows=[].slice.call(document.querySelectorAll('.case-row[data-cat]'));fb.forEach(function(b){b.addEventListener('click',function(){fb.forEach(function(x){x.classList.remove('active');});b.classList.add('active');var f=b.getAttribute('data-filter');rows.forEach(function(r){var ok=(f==='all'||r.getAttribute('data-cat')===f);r.style.display=ok?'':'none';});if(window.ScrollTrigger){try{ScrollTrigger.refresh();}catch(e){}}});});})();
 })();
