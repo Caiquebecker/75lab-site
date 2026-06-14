@@ -1,0 +1,68 @@
+================================================================
+SITE 75 LAB — COMO PUBLICAR E EDITAR (Hostinger)
+================================================================
+
+ARQUIVOS (suba TODOS para a pasta public_html, mantendo os nomes):
+  index.html      -> Home
+  solucoes.html   -> Soluções (hub de soluções + método)
+  cases.html      -> Cases
+  sobre.html      -> Sobre (origem + fundadores)
+  midia.html      -> Mídia (imprensa + redes)
+  contato.html    -> Contato (formulário)
+  404.html        -> Página de erro
+  style.css       -> TODO o visual do site (1 arquivo só)
+  app.js          -> TODAS as animações/efeitos (1 arquivo só)
+  (crie tambÉm uma pasta "img" para as fotos dos cases/logos)
+
+----------------------------------------------------------------
+PUBLICAR NA HOSTINGER
+----------------------------------------------------------------
+1. hPanel -> Gerenciador de Arquivos -> pasta public_html
+2. Faça upload de todos os arquivos acima (e da pasta img).
+3. Pronto: a Home abre automaticamente (index.html).
+   Dica: em "Configurações" do hPanel dá para definir 404.html
+   como página de erro 404.
+
+----------------------------------------------------------------
+COMO EDITAR (vale para qualquer página)
+----------------------------------------------------------------
+- Texto/visual: abra o .html no editor do Gerenciador de Arquivos,
+  use Ctrl+F para achar o trecho, edite e salve.
+- Mudar CORES/FONTES de TODO o site: edite o topo do style.css
+  (bloco ":root" — ex.: --lime, --ink, --teal).
+
+CASES (em cases.html e na Home):
+  Dentro de cada bloco <a class="pf-card"> ...
+  - Setor      -> texto em <span class="badge">
+  - Número     -> <span class="metric">
+  - Cliente    -> <div class="client">
+  - Descrição  -> <p>
+  - FOTO       -> no <div class="pf-media" style="--img:none">
+                  troque por: style="--img:url('img/seu-case.jpg')"
+                  e apague o <span class="ghost"> e o <span class="slot">.
+
+LOGOS DE CLIENTES (Home e Cases): blocos <div class="logo-cell">Logo</div>
+  Troque "Logo" por <img src="img/logo-x.png" alt="Cliente">.
+
+IMPRENSA (midia.html): blocos <a class="press"> — edite veículo, data,
+  título e o href="" para o link da matéria.
+
+REDES (midia.html): blocos <a class="post"> — troque o texto/imagem e o
+  href="" para o link do post. Para embed real, cole o iframe oficial
+  do LinkedIn/Instagram dentro do <a class="post">.
+
+----------------------------------------------------------------
+FORMULÁRIO DE CONTATO
+----------------------------------------------------------------
+Hoje o botão "Enviar briefing" abre o app de e-mail do visitante
+(mailto -> contato@75lab.com.br). Funciona, mas depende do e-mail dele.
+Para receber os envios direto numa caixa/planilha, dá para plugar um
+serviço gratuito (ex.: Formspree). É só pedir que adaptamos.
+
+----------------------------------------------------------------
+OBSERVAÇÕES
+----------------------------------------------------------------
+- As fontes e animações carregam da internet (CDN). O site funciona
+  perfeitamente online.
+- Troque o e-mail/redes (@75lab) e o sobrenome do Caíque quando tiver.
+================================================================
