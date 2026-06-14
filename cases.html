@@ -38,99 +38,38 @@
 </section>
 <section class="section cases section--ink" style="overflow:visible">
   <div class="wrap">
-    <span class="eyebrow fx" data-n="" style="color:var(--lime)">Provas reais</span>
-    <div class="cases-head fx" data-fx="scale" style="margin-left:0;text-align:left;max-width:24ch"><h2 style="font-size:clamp(44px,7vw,108px)">Intenção que virou número.</h2></div>
+    <span class="eyebrow fx" data-n="" style="color:var(--lime)">Cases</span>
+    <div class="cases-head fx" data-fx="scale" style="margin-left:0;text-align:left;max-width:16ch"><h2 style="font-size:clamp(56px,11vw,150px)">Números que falam.</h2></div>
 
-    <!-- faixa de métricas animada -->
-    <div class="ticker ticker--ink" data-marquee data-speed="0.13" aria-hidden="true" style="margin:32px 0 0;border-radius:0">
+    <div class="ticker ticker--ink" data-marquee data-speed="0.14" aria-hidden="true" style="margin:24px 0 0">
       <div class="ticker-track">
-        <span>−25% custo de produção</span><span>2.500+ PDVs simultâneos</span><span>95% de assertividade</span><span>+15 anos no trade</span>
-        <span>−25% custo de produção</span><span>2.500+ PDVs simultâneos</span><span>95% de assertividade</span><span>+15 anos no trade</span>
+        <span>−25% custo</span><span>2.500+ PDVs</span><span>95% assertividade</span><span>+15 anos</span>
+        <span>−25% custo</span><span>2.500+ PDVs</span><span>95% assertividade</span><span>+15 anos</span>
       </div>
     </div>
 
-    <!-- filtros por tipo de solução -->
     <div class="casefilter fx">
       <button data-filter="all" class="active">Todos</button>
       <button data-filter="producao">Produção</button>
       <button data-filter="execucao">Execução</button>
       <button data-filter="lancamento">Lançamento</button>
       <button data-filter="evento">Evento</button>
+      <button data-filter="promocao">Promoção</button>
     </div>
 
-    <!--
-      ════════ COMO ADICIONAR / EDITAR UM CASE ════════
-      1. Duplique um bloco <article class="case-row ..." data-cat="...">
-      2. Foto: no .case-media troque por style="--img:url('img/seu-case.jpg')" e apague o <span class="gh"> e o <span class="sl">
-      3. Edite: badge (setor), result (número grande), ttl (título) e os 3 campos Intenção/Solução/Resultado
-      4. data-cat liga o card ao filtro: producao | execucao | lancamento | evento
-    -->
-    <div class="case-rows">
-
-      <article class="case-row fx" data-fx="left" data-cat="producao">
-        <div class="case-media" style="--img:none"><span class="gh">01</span><span class="bdg">Produção</span><span class="sl">Troque pela foto do case</span></div>
-        <div class="case-info">
-          <div class="ix">CASE 01 · Nome do cliente</div>
-          <div class="result">−25%</div>
-          <div class="ttl">Mesmo material, custo muito menor.</div>
-          <div class="case-trip">
-            <div><div class="k">Intenção</div><div class="v">Reduzir o custo de produção sem perder qualidade.</div></div>
-            <div><div class="k">Solução</div><div class="v">Revisão técnica + fornecedor especialista do hub.</div></div>
-            <div><div class="k">Resultado</div><div class="v">−25% no custo, no prazo combinado.</div></div>
-          </div>
-          <a class="more" href="contato.html">Quero um resultado assim →</a>
-        </div>
-      </article>
-
-      <article class="case-row fx" data-fx="right" data-cat="execucao">
-        <div class="case-media" style="--img:none"><span class="gh">02</span><span class="bdg">Execução</span><span class="sl">Troque pela foto do case</span></div>
-        <div class="case-info">
-          <div class="ix">CASE 02 · Nome do cliente</div>
-          <div class="result">2.500+</div>
-          <div class="ttl">A marca em todo o canal, ao mesmo tempo.</div>
-          <div class="case-trip">
-            <div><div class="k">Intenção</div><div class="v">Ativar a marca em escala nacional simultânea.</div></div>
-            <div><div class="k">Solução</div><div class="v">Estratégia + execução integradas com time de campo.</div></div>
-            <div><div class="k">Resultado</div><div class="v">2.500+ PDVs com 95% de assertividade.</div></div>
-          </div>
-          <a class="more" href="contato.html">Quero um resultado assim →</a>
-        </div>
-      </article>
-
-      <article class="case-row fx" data-fx="left" data-cat="lancamento">
-        <div class="case-media" style="--img:none"><span class="gh">03</span><span class="bdg">Lançamento</span><span class="sl">Troque pela foto do case</span></div>
-        <div class="case-info">
-          <div class="ix">CASE 03 · Nome do cliente</div>
-          <div class="result">+__%</div>
-          <div class="ttl">Do plano à estreia na gôndola.</div>
-          <div class="case-trip">
-            <div><div class="k">Intenção</div><div class="v">Lançar um produto com presença forte no canal.</div></div>
-            <div><div class="k">Solução</div><div class="v">Equipe certa montada para o desafio do lançamento.</div></div>
-            <div><div class="k">Resultado</div><div class="v">Descreva aqui o resultado real medido.</div></div>
-          </div>
-          <a class="more" href="contato.html">Quero um resultado assim →</a>
-        </div>
-      </article>
-
-      <article class="case-row fx" data-fx="right" data-cat="evento">
-        <div class="case-media" style="--img:none"><span class="gh">04</span><span class="bdg">Evento</span><span class="sl">Troque pela foto do case</span></div>
-        <div class="case-info">
-          <div class="ix">CASE 04 · Nome do cliente</div>
-          <div class="result">★</div>
-          <div class="ttl">Experiência que aproximou marca e shopper.</div>
-          <div class="case-trip">
-            <div><div class="k">Intenção</div><div class="v">Gerar conexão e experimentação fora do PDV.</div></div>
-            <div><div class="k">Solução</div><div class="v">Evento/stand plugado com os especialistas certos.</div></div>
-            <div><div class="k">Resultado</div><div class="v">Descreva aqui o resultado real medido.</div></div>
-          </div>
-          <a class="more" href="contato.html">Quero um resultado assim →</a>
-        </div>
-      </article>
-
+    <!-- EDITAR/ADICIONAR CASE: cada bloco é <a class="ctile [big|wide] [v-ink|v-lime|v-teal]" data-cat="producao|execucao|lancamento|evento|promocao">.
+         .num = número gigante | .cli = 1 linha curta | .tag = setor.
+         Para usar FOTO: adicione a classe "v-photo" e style="--img:url('img/seu-case.jpg')" no <a>. -->
+    <div class="cgrid fxstag">
+      <a class="ctile big v-ink" data-cat="producao" href="contato.html"><span class="bgimg"></span><span class="tint"></span><span class="tag">Produção</span><span class="go">↗</span><div class="num">−25%</div><div class="cli">Custo de produção</div></a>
+      <a class="ctile wide v-lime" data-cat="execucao" href="contato.html"><span class="bgimg"></span><span class="tint"></span><span class="tag">Execução</span><span class="go">↗</span><div class="num">2.500+</div><div class="cli">PDVs ativados de uma vez</div></a>
+      <a class="ctile v-teal" data-cat="execucao" href="contato.html"><span class="bgimg"></span><span class="tint"></span><span class="tag">Execução</span><span class="go">↗</span><div class="num">95%</div><div class="cli">Assertividade</div></a>
+      <a class="ctile v-ink" data-cat="lancamento" href="contato.html"><span class="bgimg"></span><span class="tint"></span><span class="tag">Lançamento</span><span class="go">↗</span><div class="num">+__%</div><div class="cli">Sell-out</div></a>
+      <a class="ctile wide v-lime" data-cat="evento" href="contato.html"><span class="bgimg"></span><span class="tint"></span><span class="tag">Evento</span><span class="go">↗</span><div class="num">★</div><div class="cli">Experiência de marca</div></a>
+      <a class="ctile wide v-teal" data-cat="promocao" href="contato.html"><span class="bgimg"></span><span class="tint"></span><span class="tag">Promoção</span><span class="go">↗</span><div class="num">+__%</div><div class="cli">Giro de produto</div></a>
     </div>
 
-    <div class="case-add-row fx"><a href="contato.html">+ &nbsp;Seu próximo case acontece aqui</a></div>
-    <p class="pf-note fx" style="margin-left:0;padding-left:0">* Cases 01 e 02 usam números reais do histórico. Substitua cliente, foto e os demais resultados.</p>
+    <div class="case-add-row fx"><a href="contato.html">+ &nbsp;Seu próximo número acontece aqui</a></div>
   </div>
 </section>
 <section class="section section--ink clients">
