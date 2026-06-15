@@ -68,7 +68,7 @@
       if(lenis){(function rl(t){lenis.raf(t);requestAnimationFrame(rl);})();lenis.on('scroll',onScroll);}
       if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('shown');if(e.target.classList.contains('fxstag'))Array.prototype.forEach.call(e.target.children,function(c,i){c.style.transitionDelay=(i*0.06)+'s';});io.unobserve(e.target);}});},{threshold:0.12});document.querySelectorAll('.fx,.fxstag').forEach(function(el){io.observe(el);});}else{fallbackShow();}
     }
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(ev){var id=a.getAttribute('href');if(id.length<2)return;var el=document.querySelector(id);if(!el)return;ev.preventDefault();if(lenis)lenis.scrollTo(el,{offset:-60});else el.scrollIntoView({behavior:'smooth'});});});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(ev){if(a.hasAttribute('data-id'))return;var id=a.getAttribute('href');if(id.length<2)return;var el=document.querySelector(id);if(!el)return;ev.preventDefault();if(lenis)lenis.scrollTo(el,{offset:-60});else el.scrollIntoView({behavior:'smooth'});});});
   });
   setTimeout(function(){if(!window.gsap&&!document.querySelector('.fx.shown')){fallbackShow();}},2500);
 
@@ -127,7 +127,7 @@
       var mm=modal.querySelector('.modal-media');if(mm)mm.scrollTop=0;
     }
     function closeCase(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(window.__lenis){try{window.__lenis.start();}catch(e){}}}
-    document.querySelectorAll('.ccard[data-id]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openCase(a.getAttribute('data-id'));});});
+    document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('.ccard[data-id]'):null;if(a){e.preventDefault();openCase(a.getAttribute('data-id'));}});
     modal.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',closeCase);});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.keyCode===27)closeCase();});
   })();
