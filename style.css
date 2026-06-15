@@ -612,3 +612,14 @@
 .videos .vlabel{position:absolute;left:16px;bottom:14px;z-index:2;font-family:var(--mono);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--paper);background:rgba(5,5,5,.5);padding:5px 9px}
 .vrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
 @media(max-width:760px){.vrow{grid-template-columns:1fr}}
+
+/* ===== logo oficial (imagem) + cor lavanda da identidade ===== */
+:root{--lav:#C7B5F1}
+.brand{display:inline-flex;align-items:center;gap:0}
+.brand-img{height:26px;width:auto;display:block}
+.brand-on-light{display:none}
+header.solid .brand-on-dark{display:none}
+header.solid .brand-on-light{display:block}
+.foot-logo{height:52px;width:auto;display:block;margin-bottom:4px}
+.loader-img{height:40px;width:auto;display:block}
+.videos .vfeature:hover .vplay i,.videos .vcard:hover .vplay i{background:var(--lav)}

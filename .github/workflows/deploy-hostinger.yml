@@ -31,3 +31,5 @@ jobs:
             README.md
             LEIA-ME.txt
             *.zip
+            *.ai
+            brand-source/**
