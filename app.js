@@ -42,7 +42,7 @@
   function fallbackShow(){document.querySelectorAll('.fx').forEach(function(el){el.classList.add('shown');});document.querySelectorAll('.fxstag').forEach(function(el){el.classList.add('shown');});}
   window.addEventListener('load',function(){
     var lenis=null;
-    if(!reduce&&typeof Lenis!=='undefined'){try{lenis=new Lenis({lerp:0.1,smoothWheel:true});window.__lenis=lenis;}catch(e){lenis=null;}}
+    if(!reduce&&typeof Lenis!=='undefined'){try{lenis=new Lenis({lerp:0.075,smoothWheel:true});window.__lenis=lenis;}catch(e){lenis=null;}}
     var hasG=!reduce&&window.gsap&&window.ScrollTrigger;
     if(hasG){
       gsap.registerPlugin(ScrollTrigger);
@@ -147,6 +147,22 @@
       el.addEventListener('click',function(){play(el);});
       el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play(el);}});
     });
+  })();
+
+
+  // camada cinematográfica (grão de filme + vinheta + luz que segue o cursor)
+  (function(){
+    if(document.querySelector('.cine-grain'))return;
+    ['cine-grain','cine-vignette','cine-spot'].forEach(function(c){
+      var d=document.createElement('div');d.className='cine '+c;d.setAttribute('aria-hidden','true');document.body.appendChild(d);
+    });
+    var spot=document.querySelector('.cine-spot');
+    if(spot && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+      window.addEventListener('pointermove',function(e){
+        spot.style.setProperty('--mx', e.clientX+'px');
+        spot.style.setProperty('--my', e.clientY+'px');
+      },{passive:true});
+    }
   })();
 
 })();
