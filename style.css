@@ -636,3 +636,29 @@ header.solid .brand-on-light{display:block}
 .hero .glow{opacity:.5}
 .hero .glow.g2{opacity:.34}
 .phero .glow{opacity:.4}
+
+/* ===== harmonização mobile ===== */
+@media (max-width:680px){
+  .cine-vignette{box-shadow:inset 0 0 90px 16px rgba(0,0,0,.4)}
+  .cine-grain{opacity:.05}
+  .section{padding:clamp(52px,9vw,74px) 0}
+  .sec-head{margin-bottom:clamp(28px,6vw,40px)}
+  .hero h1{font-size:clamp(46px,13.5vw,76px);margin-bottom:20px}
+  .hero .desire{font-size:clamp(15px,4.4vw,19px);line-height:1.15;align-items:flex-start;margin-bottom:14px}
+  .hero p.lede{font-size:15.5px;margin-bottom:26px}
+  .hero-ctas{flex-direction:column;align-items:stretch;gap:12px}
+  .hero-ctas .btn{width:100%;justify-content:center}
+  .hero-mini .mn{font-size:clamp(22px,7vw,30px)}
+  .sec-head h2{font-size:clamp(34px,9.5vw,54px)!important;max-width:none}
+  .phero h1{font-size:clamp(40px,12.5vw,62px)}
+  .manifesto .big-state{font-size:clamp(32px,8.5vw,54px);margin-bottom:36px}
+  .cta-band h2{font-size:clamp(44px,15vw,84px)}
+  .logos .logo-cell{font-size:14px}
+  .statband .st{padding:22px 16px}
+  .ccard .cli{font-size:clamp(20px,6vw,26px)}
+  .modal-big span{font-size:clamp(52px,16vw,84px)}
+}
+@media (max-width:400px){
+  .hero h1{font-size:clamp(38px,13vw,54px)}
+  .sec-head h2{font-size:clamp(28px,8.5vw,42px)!important}
+}
