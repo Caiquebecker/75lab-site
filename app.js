@@ -132,4 +132,21 @@
     document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.keyCode===27)closeCase();});
   })();
 
+
+  // vídeos: clicar para incorporar (data-embed = link de embed do YouTube/Vimeo)
+  (function(){
+    var vids=[].slice.call(document.querySelectorAll('.vfeature[data-embed],.vcard[data-embed]'));
+    if(!vids.length)return;
+    function play(el){
+      var u=el.getAttribute('data-embed');
+      if(!u){return;}
+      var sep=u.indexOf('?')>-1?'&':'?';
+      el.innerHTML='<iframe src="'+u+sep+'autoplay=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>';
+    }
+    vids.forEach(function(el){
+      el.addEventListener('click',function(){play(el);});
+      el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play(el);}});
+    });
+  })();
+
 })();
