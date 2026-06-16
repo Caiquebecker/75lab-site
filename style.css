@@ -662,3 +662,8 @@ header.solid .brand-on-light{display:block}
   .hero h1{font-size:clamp(38px,13vw,54px)}
   .sec-head h2{font-size:clamp(28px,8.5vw,42px)!important}
 }
+
+/* bloco "Objetivo" no pop-up de case */
+.modal-obj{margin:0 0 18px;padding:14px 16px;border-left:3px solid var(--lime);background:rgba(192,238,78,.07)}
+.modal-obj span{display:block;font-family:var(--mono);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--lime);margin-bottom:6px}
+.modal-obj p{font-size:14.5px;line-height:1.5;color:var(--paper);margin:0}

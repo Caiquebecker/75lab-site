@@ -118,10 +118,10 @@
     var modal=document.getElementById('caseModal');if(!modal)return;
     var dataEl=document.getElementById('casedata');var DATA={};
     try{JSON.parse(dataEl.textContent).forEach(function(c){DATA[c.id]=c;});}catch(e){}
-    var gal=document.getElementById('modalGallery'),mTag=document.getElementById('mTag'),mBig=document.getElementById('mBig'),mBigL=document.getElementById('mBigL'),mTitle=document.getElementById('mTitle'),mProj=document.getElementById('mProj'),mStory=document.getElementById('mStory');
+    var gal=document.getElementById('modalGallery'),mTag=document.getElementById('mTag'),mBig=document.getElementById('mBig'),mBigL=document.getElementById('mBigL'),mTitle=document.getElementById('mTitle'),mProj=document.getElementById('mProj'),mStory=document.getElementById('mStory'),mObj=document.getElementById('mObj');
     function openCase(id){var c=DATA[id];if(!c)return;
       gal.innerHTML=(c.ph||[]).map(function(f){return '<img loading="lazy" src="img/'+f+'" alt="'+c.cli+'">';}).join('');
-      mTag.textContent=c.tag;mBig.textContent=c.big;mBigL.textContent=c.bigl;mTitle.textContent=c.cli;mProj.textContent=c.proj||'';mStory.textContent=c.story;
+      mTag.textContent=c.tag;mBig.textContent=c.big;mBigL.textContent=c.bigl;mTitle.textContent=c.cli;mProj.textContent=c.proj||'';if(mObj)mObj.textContent=c.obj||'';mStory.textContent=c.story;
       modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
       if(window.__lenis){try{window.__lenis.stop();}catch(e){}}
       var mm=modal.querySelector('.modal-media');if(mm)mm.scrollTop=0;
