@@ -171,7 +171,6 @@
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var items=[];
     document.querySelectorAll('.hero-float svg').forEach(function(el,i){ items.push({el:el,type:'t',sp:[34,-24,18,-28][i%4]}); });
-    document.querySelectorAll('.ccard .ph').forEach(function(el){ items.push({el:el,type:'op',sp:8}); });
     document.querySelectorAll('.vfeature .vthumb,.vcard .vthumb').forEach(function(el){ items.push({el:el,type:'bg',sp:10}); });
     if(!items.length) return;
     var H=window.innerHeight, vis=new Set(), map=new Map();

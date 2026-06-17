@@ -667,3 +667,10 @@ header.solid .brand-on-light{display:block}
 .modal-obj{margin:0 0 18px;padding:14px 16px;border-left:3px solid var(--lime);background:rgba(192,238,78,.07)}
 .modal-obj span{display:block;font-family:var(--mono);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--lime);margin-bottom:6px}
 .modal-obj p{font-size:14.5px;line-height:1.5;color:var(--paper);margin:0}
+
+/* cases no formato original (slide inteiro do deck) */
+.ccard{aspect-ratio:16/9;background:#fff;border-color:var(--line-d)}
+.ccard .ph{object-fit:cover}
+.ccard .ov,.ccard .tag,.ccard .meta,.ccard .go{display:none}
+.ccard:hover{border-color:var(--lime)}
+.ccard:hover .ph{transform:scale(1.04)}
